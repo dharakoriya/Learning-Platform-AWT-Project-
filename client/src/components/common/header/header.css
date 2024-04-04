@@ -13,8 +13,9 @@
 /*--------head------------*/
 /*--------header------------*/
 header {
-  background-color: rgba(255, 255, 255, 0.2);
-  margin: 0 30px;
+  background-color: rgb(32, 26, 26);
+  margin: 0 0px;
+  width: 100%;
   position: sticky;
   top: 0;
 }
