@@ -7,7 +7,7 @@ import Awrapper from "./Awrapper"
 const AboutCard = () => {
   return (
     <>
-      <section className='aboutHome'>
+      <section className='aboutHome' id="about" >
         <div className='container flexSB'>
           <div className='left row'>
             <img src='./images/about.webp' alt='' />

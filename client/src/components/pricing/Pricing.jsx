@@ -9,7 +9,7 @@ const Pricing = () => {
     <>
       <Back title='Choose The Right Plan' />
       <section className='price padding'>
-        <div className='container grid'>
+        <div className='container grid' id="pricing">
           <PriceCard />
         </div>
       </section>
