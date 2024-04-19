@@ -28,7 +28,9 @@ async function initialize() {
     host: HOST,
   });
 
-  db.Course = require("../components/courses/course.model")(sequelize); // Updated here
+  db.Course = require("../components/courses/course.model")(sequelize);
+  db.Category = require("../components/categories/category.model")(sequelize);
+   // Updated here
 
   await sequelize.sync({ alter: true });
   // await sequelize.sync({ alter: true });
