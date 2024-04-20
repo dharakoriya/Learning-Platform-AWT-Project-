@@ -4,8 +4,9 @@ const category = require("./components/categories/category.routes.js");
 const user = require("./components/users/user.routes.js");
 const errors = require("./middleware/db.error.js");
 const app = express();
-const port = 3000;
-
+const cors = require("cors");
+const port = 3001;
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(errors.errorHandler);

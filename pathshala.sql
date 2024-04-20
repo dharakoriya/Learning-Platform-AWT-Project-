@@ -3,11 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
-<<<<<<< Updated upstream
 -- Generation Time: Apr 19, 2024 at 10:18 AM
-=======
--- Generation Time: Apr 19, 2024 at 10:02 AM
->>>>>>> Stashed changes
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -51,7 +47,6 @@ CREATE TABLE `categories` (
   `description` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-<<<<<<< Updated upstream
 --
 -- Dumping data for table `categories`
 --
@@ -63,8 +58,6 @@ INSERT INTO `categories` (`category_id`, `category_name`, `description`) VALUES
 (4, 'Science', 'Science-related courses'),
 (5, 'Business', 'Business-related courses');
 
-=======
->>>>>>> Stashed changes
 -- --------------------------------------------------------
 
 --
@@ -79,7 +72,6 @@ CREATE TABLE `coursematerials` (
   `material_content` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-<<<<<<< Updated upstream
 --
 -- Dumping data for table `coursematerials`
 --
@@ -91,8 +83,6 @@ INSERT INTO `coursematerials` (`material_id`, `course_id`, `material_type`, `mat
 (4, 4, 'Lecture', 'Newtonian Mechanics', 'Link to lecture video'),
 (5, 5, 'Lecture', 'Introduction to Management', 'Link to lecture video');
 
-=======
->>>>>>> Stashed changes
 -- --------------------------------------------------------
 
 --
@@ -108,7 +98,6 @@ CREATE TABLE `courses` (
   `description` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-<<<<<<< Updated upstream
 --
 -- Dumping data for table `courses`
 --
@@ -120,8 +109,6 @@ INSERT INTO `courses` (`course_id`, `course_name`, `category_id`, `instructor_id
 (4, 'Introduction to Physics', 4, 4, 39.99, 'Fundamental principles of physics'),
 (5, 'Introduction to Business Management', 5, 5, 49.99, 'Basic concepts of business management');
 
-=======
->>>>>>> Stashed changes
 -- --------------------------------------------------------
 
 --
@@ -136,7 +123,6 @@ CREATE TABLE `enrollments` (
   `completion_status` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-<<<<<<< Updated upstream
 --
 -- Dumping data for table `enrollments`
 --
@@ -148,8 +134,6 @@ INSERT INTO `enrollments` (`enrollment_id`, `user_id`, `course_id`, `enrollment_
 (4, 5, 4, '2024-04-19 08:10:52', 0),
 (5, 1, 5, '2024-04-19 08:10:52', 0);
 
-=======
->>>>>>> Stashed changes
 -- --------------------------------------------------------
 
 --
@@ -163,7 +147,6 @@ CREATE TABLE `notes` (
   `note_content` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-<<<<<<< Updated upstream
 --
 -- Dumping data for table `notes`
 --
@@ -175,8 +158,6 @@ INSERT INTO `notes` (`note_id`, `course_id`, `note_title`, `note_content`) VALUE
 (4, 4, 'Cell Structure Notes', 'Detailed notes on the structure and function of cell organelles'),
 (5, 5, 'Business Fundamentals Overview', 'Overview of key topics covered in the course');
 
-=======
->>>>>>> Stashed changes
 -- --------------------------------------------------------
 
 --
@@ -190,7 +171,6 @@ CREATE TABLE `quizzes` (
   `questions` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`questions`))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-<<<<<<< Updated upstream
 --
 -- Dumping data for table `quizzes`
 --
@@ -199,8 +179,6 @@ INSERT INTO `quizzes` (`quiz_id`, `course_id`, `quiz_title`, `questions`) VALUES
 (1, 1, 'Python Basics Quiz', '{\"questions\": [{\"question\": \"What is a variable in Python?\", \"options\": [\"A constant value\", \"A reserved keyword\", \"A named storage location\"], \"correct_answer\": \"A named storage location\"}, {\"question\": \"What is the output of 2+2?\", \"options\": [\"3\", \"4\", \"5\"], \"correct_answer\": \"4\"}]}'),
 (2, 1, 'Python Basics Quiz', '{\"questions\": [{\"question\": \"What is a variable in Python?\", \"options\": [\"A constant value\", \"A reserved keyword\", \"A named storage location\"], \"correct_answer\": \"A named storage location\"}, {\"question\": \"What is the output of 2+2?\", \"options\": [\"3\", \"4\", \"5\"], \"correct_answer\": \"4\"}]}');
 
-=======
->>>>>>> Stashed changes
 -- --------------------------------------------------------
 
 --
@@ -212,7 +190,6 @@ CREATE TABLE `roles` (
   `role_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-<<<<<<< Updated upstream
 --
 -- Dumping data for table `roles`
 --
@@ -221,8 +198,6 @@ INSERT INTO `roles` (`role_id`, `role_name`) VALUES
 (1, 'Admin'),
 (2, 'User');
 
-=======
->>>>>>> Stashed changes
 -- --------------------------------------------------------
 
 --
@@ -237,7 +212,6 @@ CREATE TABLE `usercourseprogress` (
   `last_accessed_date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-<<<<<<< Updated upstream
 --
 -- Dumping data for table `usercourseprogress`
 --
@@ -249,8 +223,6 @@ INSERT INTO `usercourseprogress` (`progress_id`, `user_id`, `course_id`, `progre
 (4, 5, 4, 0.00, '2024-04-15 06:30:00'),
 (5, 1, 5, 50.00, '2024-04-14 02:30:00');
 
-=======
->>>>>>> Stashed changes
 -- --------------------------------------------------------
 
 --
@@ -263,7 +235,6 @@ CREATE TABLE `userroles` (
   `role_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-<<<<<<< Updated upstream
 --
 -- Dumping data for table `userroles`
 --
@@ -275,8 +246,6 @@ INSERT INTO `userroles` (`user_role_id`, `user_id`, `role_id`) VALUES
 (19, 4, 2),
 (20, 5, 2);
 
-=======
->>>>>>> Stashed changes
 -- --------------------------------------------------------
 
 --
@@ -292,7 +261,6 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
-<<<<<<< Updated upstream
 -- Dumping data for table `users`
 --
 
@@ -304,8 +272,6 @@ INSERT INTO `users` (`user_id`, `username`, `password`, `email`, `role`) VALUES
 (5, 'user4', 'user4password', 'user4@example.com', 'User');
 
 --
-=======
->>>>>>> Stashed changes
 -- Indexes for dumped tables
 --
 
@@ -401,101 +367,61 @@ ALTER TABLE `assignments`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-<<<<<<< Updated upstream
   MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-=======
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT;
->>>>>>> Stashed changes
 
 --
 -- AUTO_INCREMENT for table `coursematerials`
 --
 ALTER TABLE `coursematerials`
-<<<<<<< Updated upstream
   MODIFY `material_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-=======
-  MODIFY `material_id` int(11) NOT NULL AUTO_INCREMENT;
->>>>>>> Stashed changes
 
 --
 -- AUTO_INCREMENT for table `courses`
 --
 ALTER TABLE `courses`
-<<<<<<< Updated upstream
   MODIFY `course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-=======
-  MODIFY `course_id` int(11) NOT NULL AUTO_INCREMENT;
->>>>>>> Stashed changes
 
 --
 -- AUTO_INCREMENT for table `enrollments`
 --
 ALTER TABLE `enrollments`
-<<<<<<< Updated upstream
   MODIFY `enrollment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-=======
-  MODIFY `enrollment_id` int(11) NOT NULL AUTO_INCREMENT;
->>>>>>> Stashed changes
 
 --
 -- AUTO_INCREMENT for table `notes`
 --
 ALTER TABLE `notes`
-<<<<<<< Updated upstream
   MODIFY `note_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-=======
-  MODIFY `note_id` int(11) NOT NULL AUTO_INCREMENT;
->>>>>>> Stashed changes
 
 --
 -- AUTO_INCREMENT for table `quizzes`
 --
 ALTER TABLE `quizzes`
-<<<<<<< Updated upstream
   MODIFY `quiz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-=======
-  MODIFY `quiz_id` int(11) NOT NULL AUTO_INCREMENT;
->>>>>>> Stashed changes
 
 --
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-<<<<<<< Updated upstream
   MODIFY `role_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-=======
-  MODIFY `role_id` int(11) NOT NULL AUTO_INCREMENT;
->>>>>>> Stashed changes
 
 --
 -- AUTO_INCREMENT for table `usercourseprogress`
 --
 ALTER TABLE `usercourseprogress`
-<<<<<<< Updated upstream
   MODIFY `progress_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-=======
-  MODIFY `progress_id` int(11) NOT NULL AUTO_INCREMENT;
->>>>>>> Stashed changes
 
 --
 -- AUTO_INCREMENT for table `userroles`
 --
 ALTER TABLE `userroles`
-<<<<<<< Updated upstream
   MODIFY `user_role_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-=======
-  MODIFY `user_role_id` int(11) NOT NULL AUTO_INCREMENT;
->>>>>>> Stashed changes
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-<<<<<<< Updated upstream
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-=======
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
->>>>>>> Stashed changes
 
 --
 -- Constraints for dumped tables
