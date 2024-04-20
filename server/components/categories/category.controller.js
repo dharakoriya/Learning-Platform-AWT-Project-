@@ -1,6 +1,7 @@
 const categoryService = require("../categories/category.service");
 
 exports.create = (req, res, next) => {
+
     categoryService.create(req.body)
         .then(category => res.status(201).json(category))
         .catch(next);

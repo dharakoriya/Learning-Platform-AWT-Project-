@@ -66,11 +66,17 @@
   padding: 15px;
 }
 .online .box {
-  
   box-shadow: 0 5px 25px -2px rgb(0 0 0 / 6%);
   background-color: #fff;
   padding: 1.5rem;
   transition: 0.5s;
+}
+
+
+.online .grid3 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 15px;
 }
 .online .img {
   width: 80px;
@@ -90,10 +96,11 @@
   line-height: 30px;
 }
 .online span {
+  
   text-align: center;
   align-items: center; 
   background-color: #f8f8f8;
-  padding: 5px 20px;
+  padding: 1%;
   font-weight: 500;
   font-size: 15px;
   color: #1eb2a6;
