@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const categoryController = require("../categories/category.controller");
 
+router.get("/count", categoryController.getCourseCounts);
 router.post("/", categoryController.create);
 router.get("/", categoryController.findAll);
 router.get("/:id", categoryController.findOne);

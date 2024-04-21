@@ -23,19 +23,19 @@ function model(sequelize) {
 			allowNull: true, // Adjust this as per your requirement
 		},
 	};
-	return sequelize.define("Category", attributes, {
-		tableName: "Categories", // Specify the table name explicitly
-		timestamps: false, // Disable timestamps if not needed
-	});
-
-	// const Category = sequelize.define("Category", attributes, {
-	// 	tableName: "Categories",
-	// 	timestamps: false,
+	// return sequelize.define("Category", attributes, {
+	// 	tableName: "Categories", // Specify the table name explicitly
+	// 	timestamps: false, // Disable timestamps if not needed
 	// });
 
-	// Category.associate = (models) => {
-	// 	Category.hasMany(models.Course, { foreignKey: "category_id" });
-	// };
+	const Category = sequelize.define("Category", attributes, {
+		tableName: "Categories",
+		timestamps: false,
+	});
+
+	Category.associate = (models) => {
+		Category.hasMany(models.Course, { foreignKey: "category_id" });
+	};
 
 	return Category;
 }

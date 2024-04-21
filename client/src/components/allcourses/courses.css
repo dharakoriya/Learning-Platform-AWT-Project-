@@ -66,6 +66,7 @@
   padding: 15px;
 }
 .online .box {
+  align-items: center;
   box-shadow: 0 5px 25px -2px rgb(0 0 0 / 6%);
   background-color: #fff;
   padding: 1.5rem;
@@ -97,8 +98,8 @@
 }
 .online span {
   
-  text-align: center;
-  align-items: center; 
+  /* text-align: center;
+  align-items: center;  */
   background-color: #f8f8f8;
   padding: 1%;
   font-weight: 500;
