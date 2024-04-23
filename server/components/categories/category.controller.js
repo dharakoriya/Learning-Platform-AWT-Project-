@@ -6,6 +6,7 @@ exports.create = (req, res, next) => {
 		.then((category) => res.status(201).json(category))
 		.catch(next);
 };
+
 exports.getCourseCounts = async (req, res, next) => {
 	try {
 		const categoryCounts = await categoryService.getCountOfCoursesByCategory();
@@ -15,6 +16,7 @@ exports.getCourseCounts = async (req, res, next) => {
 		next(error);
 	}
 };
+
 exports.findAll = (req, res, next) => {
 	categoryService
 		.getAll()
@@ -28,6 +30,7 @@ exports.findCount = (req, res, next) => {
 		.then((categories) => res.json(categories))
 		.catch(next);
 };
+
 exports.findOne = (req, res, next) => {
 	categoryService
 		.getById(req.params.id)

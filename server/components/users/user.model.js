@@ -13,6 +13,7 @@ function model(sequelize) {
 		password: { type: DataTypes.STRING, allowNull: false },
 		email: { type: DataTypes.STRING, allowNull: false },
 		role: { type: DataTypes.ENUM("Admin", "User"), allowNull: false },
+		user_image: { type: DataTypes.STRING, allowNull: true }, // Add user_image field
 		createdAt: {
 			type: DataTypes.DATE,
 			defaultValue: DataTypes.NOW,
@@ -22,7 +23,9 @@ function model(sequelize) {
 			type: DataTypes.DATE,
 			defaultValue: DataTypes.NOW,
 			allowNull: true,
-		}, // Set default value to current timestamp
+		},
 	};
-	return sequelize.define("User", attributes);
+	const User = sequelize.define("User", attributes, { timestamps: false });
+
+	return User;
 }

@@ -14,7 +14,7 @@ function model(sequelize) {
 		instructor_id: { type: DataTypes.INTEGER, allowNull: false },
 		price: { type: DataTypes.DECIMAL(10, 2), allowNull: false },
 		description: { type: DataTypes.TEXT, allowNull: true },
-		course_image: { type: DataTypes.STRING, allowNull: true }, // Added course_image attribute
+		course_image: { type: DataTypes.STRING, allowNull: true }, 
 	};
 	const Course = sequelize.define("course", attributes, { timestamps: false });
 

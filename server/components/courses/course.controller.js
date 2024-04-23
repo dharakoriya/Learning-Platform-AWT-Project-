@@ -1,65 +1,43 @@
-const course_service = require("../courses/course.service").default;
+const courseService = require("../courses/course.service");
+
 exports.create = (req, res, next) => {
-	course_service
+	courseService
 		.create(req.body)
-		.then((response) =>
-			res.status(200).send({
-				message: typeof response === "string" ? "Error" : "Success",
-				data: response,
-			})
-		)
+		.then((course) => res.status(201).json(course))
 		.catch(next);
 };
+
 exports.findAll = (req, res, next) => {
-	course_service
+	courseService
 		.getAll()
-		.then((response) =>
-			res.status(200).send({
-				message: typeof response === "string" ? "Error" : "Success",
-				data: response,
-			})
-		)
+		.then((courses) => res.json(courses))
 		.catch(next);
 };
+
 exports.findOne = (req, res, next) => {
-	course_service.getById(req.params.id, (error, response) => {
-		if (error) {
-			return next(error);
-		} else {
-			return res.status(200).send({
-				message: typeof response === "string" ? "Error" : "Success",
-				data: response,
-			});
-		}
-	});
+	courseService
+		.getById(req.params.id)
+		.then((course) => (course ? res.json(course) : res.sendStatus(404)))
+		.catch(next);
 };
+
 exports.update = (req, res, next) => {
-	course_service
+	courseService
 		.update(req.params.id, req.body)
-		.then((response) =>
-			res.status(200).send({
-				message: typeof response === "string" ? "Error" : "Success",
-				data: response,
-			})
-		)
+		.then((course) => res.json(course))
 		.catch(next);
 };
+
 exports.delete = (req, res, next) => {
-	course_service
+	courseService
 		.del(req.params.id)
-		.then((response) =>
-			res.status(200).send({ message: "Success", data: response })
-		)
+		.then(() => res.json({ message: "Course deleted successfully" }))
 		.catch(next);
 };
+
 exports.search = (req, res, next) => {
-	course_service
+	courseService
 		.searchByKeyword(req.params.keyword)
-		.then((response) =>
-			res.status(200).send({
-				message: typeof response === "string" ? "Error" : "Success",
-				data: response,
-			})
-		)
+		.then((courses) => res.json(courses))
 		.catch(next);
 };
