@@ -1,3 +1,5 @@
+// course.controller.js
+
 const courseService = require("../courses/course.service");
 
 exports.create = (req, res, next) => {
@@ -8,8 +10,18 @@ exports.create = (req, res, next) => {
 };
 
 exports.findAll = (req, res, next) => {
+	// console.log("my id of category", req.params.id);
+
 	courseService
 		.getAll()
+		.then((courses) => res.json(courses))
+		.catch(next);
+};
+
+exports.findCourseByCatId = (req, res, next) => {
+	console.log("findCourseByCatId", req.params.id);
+	courseService
+		.getCoursebyCategoryId(req.params.id)
 		.then((courses) => res.json(courses))
 		.catch(next);
 };

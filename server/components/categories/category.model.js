@@ -19,8 +19,8 @@ function model(sequelize) {
 			allowNull: true,
 		},
 		category_image: {
-			type: DataTypes.STRING, // Assuming the image path will be stored as a string
-			allowNull: true, // Adjust this as per your requirement
+			type: DataTypes.STRING, 
+			allowNull: true, 
 		},
 	};
 	// return sequelize.define("Category", attributes, {
