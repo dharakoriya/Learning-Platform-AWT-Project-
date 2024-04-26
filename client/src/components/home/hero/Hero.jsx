@@ -16,7 +16,11 @@ const Hero = () => {
               </button>
               <button>
                 VIEW COURSE <i className='fa fa-long-arrow-alt-right'></i>
-              </button>
+              </button> 
+              {/* <a href="/courses" className="primary-btn button">
+                VIEW COURSE <i className='fa fa-long-arrow-alt-right'></i>
+              </a> */}
+
             </div>
           </div>
         </div>

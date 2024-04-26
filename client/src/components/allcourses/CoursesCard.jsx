@@ -83,7 +83,7 @@ const CoursesCard = () => {
                   {/* Apply the box and dimg classes */}
                   <div className='box'>
                     <div className='dimg'>
-                      <img src='public/images/courses/c1.png' alt='User'/>
+                      <img src={course.instructorImage} alt='User'/>
                     </div>
                     <div className='para'>
                       <h4> by {course.instructorName}</h4>

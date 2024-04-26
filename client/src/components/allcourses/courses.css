@@ -6,6 +6,11 @@
 	padding: 30px;
 	text-align: center;
 }
+ a {
+    color: inherit; /* Use the color inherited from the parent */
+    text-decoration: none; /* Remove underline */
+}
+
 .coursesCard .img {
 	width: 80px;
 	height: 80px;

@@ -86,7 +86,7 @@ const Onlinecourse = () => {
             </a>
           ))}
         </div>
-        <a href="courses/category/manage">Manage Categories</a>
+        <a href={`/category/manage`}>Manage Categories</a>
       </div>
     </section>
   );

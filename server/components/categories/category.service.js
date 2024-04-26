@@ -11,7 +11,7 @@ module.exports = {
 };
 
 async function getAll() {
-	return await db.Category.findAll();
+	return await db.Category.findAll({ where: { deletedAt: null } });
 }
 
 async function getById(id) {
@@ -74,5 +74,5 @@ async function update(id, params) {
 async function del(id) {
 	const category = await getById(id);
 	if (!category) throw "Category not found";
-	await category.destroy();
+	await category.update({ deletedAt: new Date() });
 }

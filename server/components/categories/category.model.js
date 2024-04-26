@@ -19,18 +19,20 @@ function model(sequelize) {
 			allowNull: true,
 		},
 		category_image: {
-			type: DataTypes.STRING, 
-			allowNull: true, 
+			type: DataTypes.STRING,
+			allowNull: true,
+		},
+		// Add deletedAt column for soft deletes
+		deletedAt: {
+			type: DataTypes.DATE,
+			allowNull: true,
 		},
 	};
-	// return sequelize.define("Category", attributes, {
-	// 	tableName: "Categories", // Specify the table name explicitly
-	// 	timestamps: false, // Disable timestamps if not needed
-	// });
 
 	const Category = sequelize.define("Category", attributes, {
 		tableName: "Categories",
 		timestamps: false,
+		paranoid: true, // Enable soft deletes
 	});
 
 	Category.associate = (models) => {

@@ -20,12 +20,8 @@ function App() {
 					<Route exact path="/" component={Home} />
 					<Route exact path="/about" component={About} />
 					<Route exact path="/courses" component={CourseHome} />
-					<Route
-						exact
-						path="/courses/category/:categoryId"
-						component={CategoryCourses}
-					/>
-					<Route exact path="category/manage" component={CategoryManagement} />
+					<Route exact path="/courses/category/:categoryId" component={CategoryCourses} />
+					<Route exact path="/category/manage" component={CategoryManagement} />
 					<Route exact path="/team" component={Team} />
 					<Route exact path="/pricing" component={Pricing} />
 					<Route exact path="/journal" component={Blog} />

@@ -30,7 +30,7 @@ const CategoryCourses = () => {
                         <div className='content flex'>
                             <div className='left'>
                                 <div className='img'>
-                                    <img src={course.course_image} alt={course.course_name} />
+                                    <img src={`../../${course.course_image}`} alt={course.course_name} />
                                 </div>
                             </div>
                             <div className='text'>
@@ -51,7 +51,8 @@ const CategoryCourses = () => {
                                     {/* Apply the box and dimg classes */}
                                     <div className='box'>
                                         <div className='dimg'>
-                                            <img src={course.instructorImage} alt='User' />
+                                            <img src={`../../${course.instructorImage}`} alt='User' />
+
                                         </div>
                                         <div className='para'>
                                             <h4> by {course.instructorName}</h4>
