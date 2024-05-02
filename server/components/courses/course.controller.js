@@ -53,3 +53,18 @@ exports.search = (req, res, next) => {
 		.then((courses) => res.json(courses))
 		.catch(next);
 };
+
+exports.addCourseImage = async (req, res, next) => {
+	try {
+		// Log the file object received from the request
+		console.log("Received file:", req.file);
+
+		// Call the service method to handle file upload
+		// const imagePath = await courseService.uploadCourseImage(req.file);
+		res.status(200).json({ message: "File uploaded successfully", imagePath: './images/courses/' + req.file.originalname });
+	} catch (error) {
+		console.error("Error uploading file:", error);
+		res.status(500).json({ error: "Internal server error" });
+	}
+};
+			

@@ -19,12 +19,17 @@ async function getById(id) {
 }
 
 async function create(params) {
-	return await db.Category.create(params);
+	// Create a new course instance and save it
+	const category = new db.Category(params);
+	await category.save();
+	return category;
 }
 
 async function getCountOfCoursesByCategory() {
 	try {
-		const categories = await db.Category.findAll();
+		const categories = await db.Category.findAll({
+			where: { deletedAt: null },
+		});
 		const categoriesWithCounts = await Promise.all(
 			categories.map(async (category) => {
 				const courseCount = await db.Course.count({
@@ -37,30 +42,6 @@ async function getCountOfCoursesByCategory() {
 	} catch (error) {
 		throw error;
 	}
-
-	// try {
-	// 	const categories = await db.Category.findAll({
-	// 		include: {
-	// 			model: db.Course,
-	// 			attributes: [],
-	// 		},
-	// 		attributes: [
-	// 			"category_id",
-	// 			"category_name",
-	// 			"description",
-	// 			"category_image",
-	// 			[
-	// 				db.sequelize.fn("COUNT", db.sequelize.col("Courses.course_id")),
-	// 				"course_count",
-	// 			],
-	// 		],
-	// 		group: ["Category.category_id"],
-	// 	});
-
-	// 	return categories;
-	// } catch (error) {
-	// 	throw error;
-	// }
 }
 
 async function update(id, params) {

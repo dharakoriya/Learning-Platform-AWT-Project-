@@ -21,7 +21,7 @@
 
 .coursesCard .grid2 {
 	display: grid;
-	grid-template-columns: repeat(1, 1fr);
+	grid-template-columns: repeat(2, 6fr);
 	grid-gap: 15px;
 }
 .coursesCard img {
@@ -72,10 +72,26 @@
 	color: #1eb2a6;
 }
 /*-------------online---------*/
+
 .online {
 	display: flex;
 	padding: 15px;
 }
+
+.online .manage-btn {
+  margin-bottom: 25px; /* Add margin to push it down */
+  display:flex;
+  text-align: center;
+  background-color: #1eb2a6;
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  width: 30%;
+  align-items: end;
+  /* position: relative; */
+}
+
 .online .box {
 	align-items: center;
 	box-shadow: 0 5px 25px -2px rgb(0 0 0 / 6%);
@@ -89,26 +105,28 @@
 	grid-template-columns: repeat(4, 1fr);
 	grid-gap: 15px;
 }
+
 .online .img {
 	width: 80px;
 	height: 80px;
 	margin: auto;
 	position: relative;
 }
+
 .online img {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
 }
+
 .online h1 {
 	font-weight: 500;
 	font-size: 20px;
 	margin: 20px 0;
 	line-height: 30px;
 }
+
 .online span {
-	/* text-align: center;
-  align-items: center;  */
 	background-color: #f8f8f8;
 	padding: 1%;
 	font-weight: 500;
@@ -116,23 +134,28 @@
 	color: #1eb2a6;
 	border-radius: 5px;
 }
+
 .online .box .show {
 	opacity: 0;
 }
+
 .online .box:hover {
 	background-color: #1eb2a6;
 	border-radius: 5px;
 	cursor: pointer;
 }
+
 .online .box:hover .show {
 	opacity: 1;
 	position: absolute;
 	top: 0;
 	left: 0;
 }
+
 .online .box:hover h1 {
 	color: #fff;
 }
-/*-------------online---------*/
+
 @media screen and (max-width: 768px) {
+  /* Add media queries if needed */
 }

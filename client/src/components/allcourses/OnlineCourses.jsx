@@ -50,6 +50,8 @@ import React, { useEffect, useState } from "react";
 import "./courses.css";
 import Heading from "../common/heading/Heading";
 import axios from "axios";
+// import jwt_decode from 'jwt-decode';
+
 
 const Onlinecourse = () => {
   const [categories, setCategories] = useState([]);
@@ -67,11 +69,22 @@ const Onlinecourse = () => {
       console.error("Error fetching Categories:", error);
     }
   };
+  const userRole = localStorage.getItem('role');
 
+  // Decode token to extract user information
+  // const decodedToken = jwt_decode(token);
+
+  // Extract user role from decoded token
+  // const userRole = decodedToken.role;
   return (
     <section className="online" id="courses">
       <div className="container">
-        <Heading subtitle="COURSES" title="Browse Our Online Courses" />
+        <Heading subtitle="COURSES" title="Categories " />
+        {userRole === "Admin" && (
+          <a href={`/course/manage`} className="manage-btn">
+            Manage Categories
+          </a>
+        )}
         <div className="content grid3">
           {categories.map((category) => (
             <a href={`/courses/category/${category.category_id}`} key={category.category_id}>
@@ -86,7 +99,7 @@ const Onlinecourse = () => {
             </a>
           ))}
         </div>
-        <a href={`/category/manage`}>Manage Categories</a>
+        {/* {userRole === "Admin" && <a href={`/category/manage`}>Manage Categories</a>} */}
       </div>
     </section>
   );

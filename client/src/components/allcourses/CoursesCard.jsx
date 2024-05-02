@@ -19,6 +19,8 @@ const CoursesCard = () => {
       console.error('Error fetching Courses:', error);
     }
   };
+  const userRole = localStorage.getItem('role');
+
 
   // return (
   //   <section className='coursesCard'>
@@ -56,6 +58,11 @@ const CoursesCard = () => {
 
   return (
     <section className='coursesCard'> {/* Apply the coursesCard class */}
+      {userRole === "Admin" && (
+        <a href={`/course/manage`} className="manage-btn">
+          Manage Courses
+        </a>
+      )}
       <div className='container grid2'>
         {courses.map(course => (
           <div className='items' key={course.course_id}>

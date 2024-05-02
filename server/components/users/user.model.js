@@ -1,3 +1,5 @@
+// user.model.js
+
 const { DataTypes } = require("sequelize");
 
 module.exports = model;
@@ -12,7 +14,7 @@ function model(sequelize) {
 		username: { type: DataTypes.STRING, allowNull: false },
 		password: { type: DataTypes.STRING, allowNull: false },
 		email: { type: DataTypes.STRING, allowNull: false },
-		role: { type: DataTypes.ENUM("Admin", "User"), allowNull: false },
+		role: { type: DataTypes.ENUM("Admin", "User"), allowNull: false, defaultValue: "User" },
 		user_image: { type: DataTypes.STRING, allowNull: true }, // Add user_image field
 		createdAt: {
 			type: DataTypes.DATE,

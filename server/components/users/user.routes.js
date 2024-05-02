@@ -1,9 +1,13 @@
+// user.routes.js
+
 const express = require("express");
 const router = express.Router();
 const userController = require("../users/user.controller");
 
-router.post("/", userController.create);
+// router.post("/", userController.create);
 router.get("/", userController.findAll);
+router.post("/signup", userController.createUser);
+router.post("/login", userController.loginUser);
 router.get("/:id", userController.findOne);
 router.get("/search/:keyword", userController.search);
 router.put("/update/:id", userController.update);

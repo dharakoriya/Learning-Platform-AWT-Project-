@@ -10,6 +10,8 @@ const CategoryManagement = () => {
     const [deleteConfirmation, setDeleteConfirmation] = useState(null);
     const [editedCategory, setEditedCategory] = useState({}); // State to store edited category fields
     const [showAddModal, setShowAddModal] = useState(false); // State to control visibility of add category modal
+    const [categoryImageFile, setCategoryImageFile] = useState(null); // State to store the uploaded course image file
+    const [showConfirmation, setShowConfirmation] = useState(false); // State to control visibility of confirmation pop-up
 
     useEffect(() => {
         fetchCategories();
@@ -36,14 +38,47 @@ const CategoryManagement = () => {
 
     const addCategory = async () => {
         try {
+
+            // Check if a file is selected
+            if (!categoryImageFile) {
+                console.error("No file selected.");
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('file', categoryImageFile);
+
+
+            const response = await axios.post("http://localhost:3001/categories/upload", formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
+
+            const imagePath = response.data.imagePath;
+
+
+            const updateCategory = { ...editedCategory, category_image: imagePath };
+
             // Send API request to add category with editedCategory state
-            await axios.post("http://localhost:3001/categories", editedCategory);
+            await axios.post("http://localhost:3001/categories", updateCategory);
             // Reset editedCategory state
             setEditedCategory({});
+
+            setCategoryImageFile(null);
+
             // Fetch updated categories
             fetchCategories();
             // Close the modal
             setShowAddModal(false);
+
+            // Show confirmation pop-up
+            setShowConfirmation(true);
+
+            setTimeout(() => {
+                setShowConfirmation(false);
+            }, 3000);
+
         } catch (error) {
             console.error("Error adding category:", error);
         }
@@ -113,9 +148,28 @@ const CategoryManagement = () => {
                                         onChange={(e) => setEditedCategory({ ...editedCategory, category_image: e.target.value })}
                                     />
                                 ) : (
-                                    category.category_image
+                                    <img src={'../' + category.category_image} alt={category.category_image} style={{ maxWidth: '100px', maxHeight: '100px' }} />
                                 )}
                             </td>
+                            {/* <td>
+                                {editingCategory === category.category_id ? (
+                                    <input
+                                        type="file"
+                                        onChange={(e) => {
+                                            const file = e.target.files[0];
+                                            if (file) {
+                                                // Assuming you have some function to upload the image and get its path
+                                                uploadImageAndGetPath(file).then((imagePath) => {
+                                                    setEditedCategory({ ...editedCategory, category_image: imagePath });
+                                                });
+                                            }
+                                        }}
+                                    />
+                                ) : (
+                                    <img src={category.category_image} alt="Category Image" />
+                                )}
+                            </td> */}
+
                             <td>
                                 {editingCategory === category.category_id ? (
                                     <button className="save-button" onClick={() => updateCategory(category.category_id, editedCategory)}>Save</button>
@@ -161,9 +215,8 @@ const CategoryManagement = () => {
                         />
                         <label>Category Image:</label>
                         <input
-                            type="text"
-                            value={editedCategory.category_image || ""}
-                            onChange={(e) => setEditedCategory({ ...editedCategory, category_image: e.target.value })}
+                            type="file"
+                            onChange={(e) => setCategoryImageFile(e.target.files[0])}
                         />
                         <div className="modal-buttons">
                             <button className="confirm-button" onClick={addCategory}>Add Category</button>
@@ -172,6 +225,13 @@ const CategoryManagement = () => {
                                 setEditedCategory({});
                             }}>Cancel</button>
                         </div>
+                    </div>
+                </div>
+            )}
+            {showConfirmation && (
+                <div className="modal">
+                    <div className="modal-content">
+                        <p>Category added successfully!</p>
                     </div>
                 </div>
             )}

@@ -1,0 +1,63 @@
+/* Login and Signup Page Container */
+/* styles.css */
+
+/* Login and Signup Page Container */
+.custom-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: #007bff; Primary color */
+  height: 100vh;
+}
+
+/* Form Container */
+.custom-form-container {
+  background-color: #fff; /* White */
+  padding: 20px;
+  border-radius: 10px;
+  width: 25%;
+}
+
+/* Form Title */
+.custom-form-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Error Messages */
+.custom-error-message {
+  color: #dc3545; /* Bootstrap danger color */
+}
+
+/* Form Inputs */
+.custom-form-input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+/* Submit Button */
+.custom-submit-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #28a745; /* Bootstrap success color */
+  border: none;
+  border-radius: 0;
+  color: #fff; /* White */
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+/* Sign Up Link */
+.custom-signup-link {
+  width: 100%;
+  padding: 10px;
+  background-color: #fff; /* White */
+  border: 1px solid #ccc; /* Bootstrap default border color */
+  border-radius: 0;
+  color: #000; /* Black */
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}

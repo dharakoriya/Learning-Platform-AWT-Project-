@@ -2,6 +2,7 @@
 
 const db = require("../../helpers/db.helper");
 const { Op } = require("sequelize");
+const path = require("path");
 
 module.exports = {
 	getAll,
@@ -10,11 +11,12 @@ module.exports = {
 	update,
 	del,
 	searchByKeyword,
+	uploadCourseImage,
 	getCoursebyCategoryId,
 };
 
 async function getAll() {
-	const courses = await db.Course.findAll();
+	const courses = await db.Course.findAll({ where: { deletedAt: null } });
 
 	const coursesWithInstructors = await Promise.all(
 		courses.map(async (course) => {
@@ -78,14 +80,20 @@ async function getAll() {
 	return coursesWithInstructors;
 }
 
-async function getById(id, callback) {
-	getCourse(id)
-		.then((response) => {
-			return callback(null, response);
-		})
-		.catch((error) => {
-			return callback(error);
-		});
+async function uploadCourseImage(file) {
+	// Set the destination folder where the uploaded files will be stored
+	console.log("Uploading image file:", file);
+	const destination = "../client/public/images/courses";
+	console.log("Destination:", destination);
+	// Move the uploaded file to the destination folder
+	await file.mv(path.join(destination, file.name));
+	// Return the image path
+	return path.join("../client/public/images/courses", file.name);
+}
+
+
+async function getById(id) {
+	return await db.Course.findByPk(id);
 }
 async function update(id, params) {
 	const course = await getCourse(id);
@@ -183,9 +191,9 @@ async function getCoursebyCategoryId(id) {
 	return coursesWithInstructors;
 	// return course;
 }
+
 async function del(id) {
-	// Delete course by id
-	return await db.Course.destroy({
-		where: { id },
-	});
+	const course = await getById(id);
+	if (!course) throw "Course not found";
+	await course.update({ deletedAt: new Date() });
 }
