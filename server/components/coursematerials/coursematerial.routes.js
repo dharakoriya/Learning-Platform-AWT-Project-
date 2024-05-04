@@ -4,7 +4,8 @@ const courseMaterialController = require("./coursematerial.controller");
 
 router.post("/", courseMaterialController.create);
 router.get("/", courseMaterialController.findAll);
-router.get("/:id", courseMaterialController.findOne);
+router.get("/:id", courseMaterialController.findVideo);
+// router.get("/:id", courseMaterialController.findOne);
 router.put("/:id", courseMaterialController.update);
 router.delete("/:id", courseMaterialController.delete);
 

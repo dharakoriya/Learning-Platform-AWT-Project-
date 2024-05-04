@@ -1,0 +1,74 @@
+/* Video container */
+.video-container {
+  padding: 15px;
+  position: relative;
+  max-width: 940px;
+  margin: 0 auto;
+  border: 1px solid #ddd; /* Added border for subtle definition */
+  border-radius: 5px; /* Added rounded corners */
+}
+
+/* Video player */
+.video-player {
+  width: 100%;
+  display: block;
+  height: 300px; /* Adjust the height as needed */
+}
+
+/* Path indicator */
+.video-path {
+  padding: 10px 15px;
+  background-color: #f5f5f5; /* Light gray background */
+  border-bottom: 1px solid #ddd; /* Separator line */
+  display: flex; /* Allow for horizontal layout */
+  align-items: center; /* Vertically align content */
+}
+
+.video-path span {
+  margin-right: 10px; /* Spacing between path elements */
+  color: #333; /* Text color */
+}
+
+.video-path span:not(:last-child)::after {
+  content: '>'; /* Add separator arrow for path */
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+/* Play/pause button */
+.play-pause-button {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.play-pause-button:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+/* Path indicator */
+.video-path {
+  padding: 10px 15px;
+  background-color: #f5f5f5; /* Light gray background */
+  border-bottom: 1px solid #ddd; /* Separator line */
+  display: flex; /* Allow for horizontal layout */
+  align-items: center; /* Vertically align content */
+}
+
+.video-path span {
+  margin-right: 10px; /* Spacing between path elements */
+  color: #333; /* Text color */
+}
+
+.video-path span:not(:last-child)::after {
+  content: ' >'; /* Add separator arrow for path */
+  font-weight: bold;
+  margin-right: 5px;
+}

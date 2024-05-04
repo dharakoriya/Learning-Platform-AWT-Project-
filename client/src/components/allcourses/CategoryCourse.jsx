@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import "./courses.css";
 
@@ -66,7 +66,10 @@ const CategoryCourses = () => {
                         <div className='price'>
                             <h3>₹{course.price}/-</h3>
                         </div>
-                        <button className='outline-btn'>ENROLL NOW !</button>
+                        <Link to={`/courses/course-detail/${course.course_id}`}>
+
+                            <button className='outline-btn'>ENROLL NOW !</button>
+                        </Link>
                     </div>
                 ))}
             </div>

@@ -1,6 +1,6 @@
 import "./App.css";
 import Header from "./components/common/header/Header";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import About from "./components/about/About";
 import CourseHome from "./components/allcourses/CourseHome";
 import Team from "./components/team/Team";
@@ -14,31 +14,49 @@ import CategoryManagement from "./components/allcourses/CategoryManagement";
 import Login from "./components/login_signup/Login";
 import Signup from "./components/login_signup/Signup";
 import CourseManagement from "./components/allcourses/CourseManagement";
+import CategoryHome from "./components/allcourses/CategoryHome";
+import CourseDetail from "./components/allcourses/CourseDetail";
+import VideoPlayer from "./components/video/VideoPlayer";
 
 function App() {
 	return (
 		<>
 			<Router>
 				<Header />
-				<Switch>
-					<Route exact path="/" component={Home} />
-					<Route exact path="/about" component={About} />
-					<Route exact path="/courses" component={CourseHome} />
+				<Routes>
+					<Route exact path="/" element={<Home />} />
+					<Route exact path="/about" element={<About />} />
+					<Route exact path="/courses" element={<CourseHome />} />
+					<Route exact path="/category" element={<CategoryHome />} />
+					<Route
+						exact
+						path="/courses/course-detail/video/:courseId"
+						element={<VideoPlayer />}
+					/>
+					<Route
+						exact
+						path="/courses/course-detail/:courseId"
+						element={<CourseDetail />}
+					/>
 					<Route
 						exact
 						path="/courses/category/:categoryId"
-						component={CategoryCourses}
+						element={<CategoryCourses />}
 					/>
-					<Route exact path="/category/manage" component={CategoryManagement} />
-					<Route exact path="/course/manage" component={CourseManagement} />
+					<Route
+						exact
+						path="/category/manage"
+						element={<CategoryManagement />}
+					/>
+					<Route exact path="/course/manage" element={<CourseManagement />} />
 
-					<Route exact path="/team" component={Team} />
-					<Route exact path="/pricing" component={Pricing} />
-					<Route exact path="/journal" component={Blog} />
-					<Route exact path="/contact" component={Contact} />
-					<Route exact path="/login" component={Login} />
-					<Route exact path="/signup" component={Signup} />
-				</Switch>
+					<Route exact path="/team" element={<Team />} />
+					<Route exact path="/pricing" element={<Pricing />} />
+					<Route exact path="/journal" element={<Blog />} />
+					<Route exact path="/contact" element={<Contact />} />
+					<Route exact path="/login" element={<Login />} />
+					<Route exact path="/signup" element={<Signup />} />
+				</Routes>
 				<Footer />
 			</Router>
 		</>

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; 
 import Validation from './LoginValidation';
-import './login_signup.css'
+import './login_signup.css';
 
 function Login() {
     const [values, setValues] = useState({
@@ -10,9 +10,9 @@ function Login() {
         password: ''
     });
 
-    const history = useHistory();
     const [errors, setErrors] = useState({});
     const [backendError, setBackendError] = useState([]);
+    const navigate = useNavigate();
 
     const handleInput = (event) => {
         setValues(prev => ({
@@ -47,12 +47,12 @@ function Login() {
                         if (res.data.message === "Success") {
                             console.log("Login successful");
                             localStorage.setItem('role', res.data.data.user.role);
-                            console.log("Login role:", res.data.data.user.role);
+                            localStorage.setItem('user', JSON.stringify(res.data.data.user));
+                            console.log("User data:", res.data.data.user);
 
-                            history.push('/');
-                            setTimeout(() => {
-                                window.location.reload();
-                            }, 100);
+                            console.log("Login role:", res.data.data.user.role);
+                            navigate('/');
+
                         } else {
                             console.log("No record existed");
                             alert("No record existed");
@@ -68,44 +68,6 @@ function Login() {
         }
     };
 
-
-    // return (
-    //     <div className='d-flex justify-content-center align-items-center bg-primary vh-100'>
-    //         <div className='bg-white p-3 rounded w-25'>
-    //             <h2>Sign-In</h2>
-    //             {backendError ? backendError.map(e => (
-    //                 <p key={e.msg} className='text-danger'>{e.msg}</p>
-    //             )) : <span></span>}
-    //             <form action="" onSubmit={handleSubmit}>
-    //                 <div className='mb-3'>
-    //                     <label htmlFor="email"><strong>Email</strong></label>
-    //                     <input
-    //                         type="email"
-    //                         placeholder='Enter Email'
-    //                         name='email'
-    //                         onChange={handleInput}
-    //                         className='form-control rounded-0'
-    //                     />
-    //                     {errors.email && <span className='text-danger'> {errors.email}</span>}
-    //                 </div>
-    //                 <div className='mb-3'>
-    //                     <label htmlFor="password"><strong>Password</strong></label>
-    //                     <input
-    //                         type="password"
-    //                         placeholder='Enter Password'
-    //                         name='password'
-    //                         onChange={handleInput}
-    //                         className='form-control rounded-0'
-    //                     />
-    //                     {errors.password && <span className='text-danger'> {errors.password}</span>}
-    //                 </div>
-    //                 <button type='submit' className='btn btn-success w-100 rounded-0'> Log in</button>
-    //                 <p>You agree to our terms and policies</p>
-    //                 <Link to="/signup" className='btn btn-default border w-100 bg-light rounded-0 text-decoration-none'>Create Account</Link>
-    //             </form>
-    //         </div>
-    //     </div>
-    // );
     return (
         <div className='custom-container'>
             <div className='custom-form-container'>
@@ -138,7 +100,7 @@ function Login() {
                     </div>
                     <button type='submit' className='custom-submit-btn'> Log in</button>
                     {/* <p>You agree to our terms and policies</p> */}
-                    <a href="/signup" className='custom-signup-link'>Create Account</a>
+                    <Link to="/signup" className='custom-signup-link'>Create Account</Link>
                 </form>
             </div>
         </div>

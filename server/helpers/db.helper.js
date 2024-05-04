@@ -32,6 +32,7 @@ async function initialize() {
 	db.Category = require("../components/categories/category.model")(sequelize);
 	db.User = require("../components/users/user.model")(sequelize);
 	db.CourseMaterial = require("../components/coursematerials/coursematerial.model")(sequelize);
+	db.Enrollment = require("../components/enrollments/enrollment.model")(sequelize);
 	// Updated here
 
 	await sequelize.sync({ alter: true });

@@ -1,4 +1,4 @@
-const courseMaterialService = require("./coursematerials.service");
+const courseMaterialService = require("./coursematerial.service");
 
 exports.create = async (req, res, next) => {
 	try {
@@ -12,6 +12,15 @@ exports.create = async (req, res, next) => {
 exports.findAll = async (req, res, next) => {
 	try {
 		const courseMaterials = await courseMaterialService.getAll();
+		res.json(courseMaterials);
+	} catch (error) {
+		next(error);
+	}
+};
+
+exports.findVideo = async (req, res, next) => {
+	try {
+		const courseMaterials = await courseMaterialService.getCourseVideo(req.params.id);
 		res.json(courseMaterials);
 	} catch (error) {
 		next(error);

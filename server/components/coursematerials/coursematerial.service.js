@@ -6,6 +6,7 @@ module.exports = {
 	create,
 	update,
 	del,
+	getCourseVideo,
 };
 
 async function getAll() {
@@ -18,6 +19,10 @@ async function getById(id) {
 
 async function create(params) {
 	return await db.CourseMaterial.create(params);
+}
+
+async function getCourseVideo(id) {
+	return await db.CourseMaterial.findAll({ where: { course_id: id } });
 }
 
 async function update(id, params) {

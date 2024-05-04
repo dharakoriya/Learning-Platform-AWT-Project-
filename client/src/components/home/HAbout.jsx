@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react"
 import Heading from "../common/heading/Heading"
 import "../allcourses/courses.css"
 import axios from "axios"
-
+import Onlinecourse from "../allcourses/OnlineCourses"
+import { Link } from "react-router-dom"
 const HAbout = () => {
   const [courses, setCourses] = useState([]);
 
@@ -24,8 +25,8 @@ const HAbout = () => {
     <>
       <section className='homeAbout'>
         <div className='container'>
+          <Onlinecourse />
           <Heading subtitle='our courses' title='explore our popular online courses' />
-
           <div className='coursesCard'>
             {/* copy code form  coursesCard */}
             <div className='container grid2'>
@@ -69,13 +70,15 @@ const HAbout = () => {
                   <div className='price'>
                     <h3>₹{course.price}/-</h3>
                   </div>
-                  <button className='outline-btn'>ENROLL NOW !</button>
+                  <Link to={`/courses/course-detail/${course.course_id}`}>
+                    <button className='outline-btn'>ENROLL NOW !</button>
+                  </Link>
                 </div>
               ))}
             </div>
           </div>
         </div>
-        {/* <OnlineCourses /> */}
+        
       </section>
     </>
   )

@@ -25,8 +25,9 @@ async function getAll() {
 			let instructorImage = null;
 			if (course.instructor_id) {
 				try {
-					console.log("C1", course.instructor_id);
+					// console.log("C1", course.instructor_id);
 					const instructor = await db.User.findByPk(course.instructor_id);
+
 					console.log("Instructor:", instructor.toJSON());
 					instructorName = instructor ? instructor.username : null;
 					instructorImage = instructor ? instructor.user_image : null;
@@ -34,7 +35,8 @@ async function getAll() {
 					console.error("Error fetching instructor:", error);
 				}
 			}
-
+			const category_name = await db.Category.findByPk(course.category_id);
+			console.log("Category Name:", category_name.category_name);
 			const lectureMaterials = await db.CourseMaterial.findAll({
 				attributes: ["lecture_duration"],
 				where: {
@@ -67,13 +69,14 @@ async function getAll() {
 			const minutes = Math.floor(total_length / (1000 * 60)) % 60;
 			const hours = Math.floor(total_length / (1000 * 60 * 60));
 			total_length = `${hours}`;
-
+			const cat_name = category_name.category_name;
 			return {
 				...course.toJSON(),
 				instructorName,
 				instructorImage,
 				total_length,
 				total_lectures,
+				cat_name,
 			};
 		})
 	);

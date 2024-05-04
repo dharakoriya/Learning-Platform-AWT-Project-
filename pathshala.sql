@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 22, 2024 at 10:52 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: May 03, 2024 at 09:24 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -45,20 +45,27 @@ CREATE TABLE `categories` (
   `category_id` int(11) NOT NULL,
   `category_name` varchar(255) NOT NULL,
   `description` text DEFAULT NULL,
-  `category_image` varchar(255) DEFAULT NULL
+  `category_image` varchar(255) DEFAULT NULL,
+  `deletedAt` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `categories`
 --
 
-INSERT INTO `categories` (`category_id`, `category_name`, `description`, `category_image`) VALUES
-(1, 'Programming', 'Programming-related courses and too much fun to learn', './images/courses/online/123.jpg'),
-(2, 'Mathematics', 'Mathematics-related courses', './images/courses/online/o1.png'),
-(3, 'Languages', 'Language learning courses', './images/courses/online/o1.png'),
-(4, 'Science', 'Science-related courses', './images/courses/online/o1.png'),
-(5, 'Business', 'Business-related courses', './images/courses/online/o1.png'),
-(6, 'Java', 'Introduction to Java', './images/courses/online/o1.png');
+INSERT INTO `categories` (`category_id`, `category_name`, `description`, `category_image`, `deletedAt`) VALUES
+(1, 'Programming', 'Programming-related courses and too much fun to learn', '/images/courses/online/123.jpg', NULL),
+(2, 'Mathematics', 'Mathematics-related courses', '/images/courses/online/o1.png', NULL),
+(3, 'Languages', 'Language learning courses', '/images/courses/online/o1.png', NULL),
+(4, 'Science', 'Science-related courses', '/images/courses/online/o1.png', NULL),
+(5, 'Business', 'Business-related courses', '/images/courses/online/o1.png', NULL),
+(6, 'Java', 'Introduction to Java', '/images/courses/online/o1.png', '2024-05-01 09:04:44'),
+(8, 'ABC', 'sfbsk,', 'nklsnkcsnknd', '2024-05-01 11:46:22'),
+(9, 'hjkj', 'jhjk', '1da9d86e641bce8cd2e79701ba3491a8.jpg', '2024-05-01 11:46:25'),
+(10, 'nskN', 'Nnkn', '1da9d86e641bce8cd2e79701ba3491a8.jpg', '2024-05-01 17:48:26'),
+(11, 'nbjmn', 'mnk,n', '1da9d86e641bce8cd2e79701ba3491a8.jpg', '2024-05-01 17:48:29'),
+(12, 'gg', 'gg', '1da9d86e641bce8cd2e79701ba3491a8.jpg', '2024-05-01 17:48:32'),
+(13, 'aa', 'aa', '90f24d55168862c23504c0f71bcdbcf6.jpg', '2024-05-01 17:48:34');
 
 -- --------------------------------------------------------
 
@@ -82,7 +89,7 @@ CREATE TABLE `coursematerials` (
 --
 
 INSERT INTO `coursematerials` (`material_id`, `material_type`, `material_title`, `material_content`, `lecture_duration`, `createdAt`, `updatedAt`, `course_id`) VALUES
-(1, 'Lecture', 'Introduction to Python', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', '01:30:00', NULL, NULL, 1),
+(1, 'Lecture', 'Introduction to Python', './video/video-1.mp4', '01:30:00', NULL, NULL, 1),
 (2, 'Quiz', 'Python Quiz', 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', NULL, NULL, NULL, 1),
 (3, 'Lecture', 'Calculus I', 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', '02:15:00', NULL, NULL, 2),
 (4, 'Assignment', 'Calculus I Assignment 1', 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.', NULL, NULL, NULL, 2),
@@ -101,20 +108,21 @@ CREATE TABLE `courses` (
   `instructor_id` int(11) NOT NULL,
   `price` decimal(10,2) NOT NULL,
   `description` text DEFAULT NULL,
-  `course_image` varchar(255) DEFAULT NULL
+  `course_image` varchar(255) DEFAULT NULL,
+  `deletedAt` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `courses`
 --
 
-INSERT INTO `courses` (`course_id`, `course_name`, `category_id`, `instructor_id`, `price`, `description`, `course_image`) VALUES
-(1, 'Introduction to Python', 1, 1, '49.99', 'Learn the basics of Python programming language', './images/courses/online/o1.png'),
-(2, 'Calculus I', 2, 2, '59.99', 'Fundamental concepts of calculus', './images/courses/online/o1.png'),
-(3, 'Spanish for Beginners', 3, 3, '29.99', 'Learn basic Spanish vocabulary and grammar', './images/courses/online/o1.png'),
-(4, 'Introduction to Physics', 4, 4, '39.99', 'Fundamental principles of physics', './images/courses/online/o1.png'),
-(5, 'Introduction to Business Management', 5, 5, '49.99', 'Basic concepts of business management', './images/courses/online/o1.png'),
-(6, 'C++ intro', 3, 2, '50000.00', 'introduction to c++ with all functionality ', './images/courses/c9.png');
+INSERT INTO `courses` (`course_id`, `course_name`, `category_id`, `instructor_id`, `price`, `description`, `course_image`, `deletedAt`) VALUES
+(1, 'Introduction to Python', 1, 1, 49.99, 'Learn the basics of Python programming language', './images/courses/online/o1.png', NULL),
+(2, 'Calculus I', 2, 2, 59.99, 'Fundamental concepts of calculus', './images/courses/online/o1.png', NULL),
+(3, 'Spanish for Beginners', 3, 3, 29.99, 'Learn basic Spanish vocabulary and grammar', './images/courses/online/o1.png', NULL),
+(4, 'Introduction to Physics', 4, 4, 39.99, 'Fundamental principles of physics', './images/courses/online/o1.png', NULL),
+(5, 'Introduction to Business Management', 5, 5, 49.99, 'Basic concepts of business management', './images/courses/online/o1.png', NULL),
+(6, 'C++ intro', 3, 2, 50000.00, 'introduction to c++ with all functionality ', './images/courses/c9.png', NULL);
 
 -- --------------------------------------------------------
 
@@ -224,11 +232,11 @@ CREATE TABLE `usercourseprogress` (
 --
 
 INSERT INTO `usercourseprogress` (`progress_id`, `user_id`, `course_id`, `progress_percentage`, `last_accessed_date`) VALUES
-(1, 2, 1, '25.00', '2024-04-18 05:00:00'),
-(2, 3, 2, '10.00', '2024-04-17 10:15:00'),
-(3, 4, 3, '0.00', '2024-04-16 03:50:00'),
-(4, 5, 4, '0.00', '2024-04-15 06:30:00'),
-(5, 1, 5, '50.00', '2024-04-14 02:30:00');
+(1, 2, 1, 25.00, '2024-04-18 05:00:00'),
+(2, 3, 2, 10.00, '2024-04-17 10:15:00'),
+(3, 4, 3, 0.00, '2024-04-16 03:50:00'),
+(4, 5, 4, 0.00, '2024-04-15 06:30:00'),
+(5, 1, 5, 50.00, '2024-04-14 02:30:00');
 
 -- --------------------------------------------------------
 
@@ -264,7 +272,7 @@ CREATE TABLE `users` (
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `role` enum('Admin','User') NOT NULL,
+  `role` enum('Admin','User') NOT NULL DEFAULT 'User',
   `createdAt` datetime DEFAULT NULL,
   `updatedAt` datetime DEFAULT NULL,
   `user_image` varchar(255) DEFAULT NULL
@@ -279,7 +287,8 @@ INSERT INTO `users` (`user_id`, `username`, `password`, `email`, `role`, `create
 (2, 'user1', 'user1password', 'user1@example.com', 'User', NULL, NULL, './images/team/t2.webp'),
 (3, 'user2', 'user2password', 'user2@example.com', 'User', NULL, NULL, './images/team/t7.webp'),
 (4, 'user3', 'user3password', 'user3@example.com', 'User', NULL, NULL, './images/team/t5.webp'),
-(5, 'user4', 'user4password', 'user4@example.com', 'User', NULL, NULL, './images/team/t1.webp');
+(5, 'user4', 'user4password', 'user4@example.com', 'User', NULL, NULL, './images/team/t1.webp'),
+(6, 'Dhara', 'Abcd@123', 'dharakoriya9@gmail.com', 'Admin', '2024-05-03 09:40:21', '2024-05-03 09:40:21', NULL);
 
 --
 -- Indexes for dumped tables
@@ -377,7 +386,7 @@ ALTER TABLE `assignments`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `coursematerials`
@@ -431,7 +440,7 @@ ALTER TABLE `userroles`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
+import { Link } from "react-router-dom";
 import "./courses.css";
 
 const CoursesCard = () => {
@@ -21,47 +22,17 @@ const CoursesCard = () => {
   };
   const userRole = localStorage.getItem('role');
 
-
-  // return (
-  //   <section className='coursesCard'>
-  //     <div className='container grid2'>
-  //       {courses.map(course => (
-  //         <div className='items' key={course.course_id}>
-  //           <div className='content flex'>
-  //             <div className='left'>
-  //               <div className='img'>
-  //                 <img src={course.course_image} alt={course.course_name} />
-  //               </div>
-  //             </div>
-  //             <div className='text'>
-  //               <h1>{course.course_name}</h1>
-  //               <div className='rate'>
-  //                 {/* Rating component */}
-  //               </div>
-  //               <div className='details'>
-  //                 {/* Display instructor's name if available */}
-  //                 <span>Instructor: {course.instructorName ? course.instructorName : 'Unknown'}</span>
-  //                 {/* Additional details */}
-  //                 <span>Total Time: {"ihvdsin"}</span>
-  //               </div>
-  //             </div>
-  //           </div>
-  //           <div className='price'>
-  //             <h3>₹{course.price}/-</h3>
-  //           </div>
-  //           <button className='outline-btn'>ENROLL NOW !</button>
-  //         </div>
-  //       ))}
-  //     </div>
-  //   </section>
-  // );
-
   return (
     <section className='coursesCard'> {/* Apply the coursesCard class */}
-      {userRole === "Admin" && (
+      {/* {userRole === "Admin" && (
         <a href={`/course/manage`} className="manage-btn">
           Manage Courses
         </a>
+      )} */}
+      {userRole === "Admin" && (
+        <button className="manage-btn">
+          <Link to="/course/manage">Manage Courses</Link>
+        </button>
       )}
       <div className='container grid2'>
         {courses.map(course => (
@@ -104,7 +75,9 @@ const CoursesCard = () => {
             <div className='price'>
               <h3>₹{course.price}/-</h3>
             </div>
-            <button className='outline-btn'>ENROLL NOW !</button>
+            <Link to={`/courses/course-detail/${course.course_id}`}>
+              <button className='outline-btn'>ENROLL NOW !</button>
+            </Link>
           </div>
         ))}
       </div>
