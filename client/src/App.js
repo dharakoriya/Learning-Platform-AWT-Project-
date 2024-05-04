@@ -17,6 +17,7 @@ import CourseManagement from "./components/allcourses/CourseManagement";
 import CategoryHome from "./components/allcourses/CategoryHome";
 import CourseDetail from "./components/allcourses/CourseDetail";
 import VideoPlayer from "./components/video/VideoPlayer";
+import Mycourses from "./components/allcourses/MyCourses";
 
 function App() {
 	return (
@@ -28,6 +29,11 @@ function App() {
 					<Route exact path="/about" element={<About />} />
 					<Route exact path="/courses" element={<CourseHome />} />
 					<Route exact path="/category" element={<CategoryHome />} />
+					<Route
+						exact
+						path="/mycourses"
+						element={<Mycourses />}
+					/>
 					<Route
 						exact
 						path="/courses/course-detail/video/:courseId"

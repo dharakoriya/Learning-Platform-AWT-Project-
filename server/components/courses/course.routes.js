@@ -29,6 +29,15 @@ router.post("/", courseController.create);
 router.get("/", courseController.findAll);
 router.get("/category/:id", courseController.findCourseByCatId);
 router.get("/:id", courseController.findOne);
+router.get("/my-course/:id", async (req, res, next) => {
+	try {
+		await courseController.findForMyCourse(req, res);
+	} catch (err) {
+		console.error("Error Enroll user to db:", err);
+		// Handle the error here, e.g., return an error response to the client
+		next(err);
+	}
+});
 router.get("/search/:keyword", courseController.search);
 router.put("/update/:id", courseController.update);
 router.delete("/:id", courseController.delete);

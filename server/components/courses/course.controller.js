@@ -18,6 +18,15 @@ exports.findAll = (req, res, next) => {
 		.catch(next);
 };
 
+exports.findForMyCourse = (req, res, next) => {
+	// console.log("my id of category", req.params.id);
+
+	courseService
+		.getCoursesForMyCourse(req.params.id)
+		.then((courses) => res.json(courses))
+		.catch(next);
+};
+
 exports.findCourseByCatId = (req, res, next) => {
 	console.log("findCourseByCatId", req.params.id);
 	courseService
